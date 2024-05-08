@@ -1,4 +1,3 @@
 <h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h2>Todo App</h2>
 <a href="/login">login</a>
-<a href="/dashboard">Dashboard</a>
