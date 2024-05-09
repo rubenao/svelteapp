@@ -1,5 +1,3 @@
-
-
 <script>
   import {updateNote} from '$lib/api'
   import { goto } from '$app/navigation';
@@ -28,19 +26,19 @@
   }
 </script>
 
-    
-    <article>
-        <h1>{data.props.note.nombre_tarea}</h1>
-    </article>
+    <div class="flex flex-col gap-5 p-5">
+ 
+        <h1 class="text-3xl font-bold">{data.props.note.nombre_tarea}</h1>
+          {#if error}
+            <p>Error: {error}</p>
+          {:else if data.props.note}
+          <div class="flex flex-col gap-3">
+            <h2 class="font-medium">Editar Nota</h2>
+            <h3 class="font-medium">user_id_usuario:{data.props.note._user.id}</h3>
+            <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" bind:value={data.props.note.nombre_tarea} on:keydown={handleKeydown} />
+          </div>
+        {:else}
+          <p>Cargando los datos de la nota...</p>
+        {/if}
 
-    {#if error}
-      <p>Error: {error}</p>
-    {:else if data.props.note}
-    <div>
-      <h2>Editar Nota</h2>
-      <h3>user_id_usuario {data.props.note._user.id}</h3>
-      <input type="text" bind:value={data.props.note.nombre_tarea} on:keydown={handleKeydown} />
     </div>
-  {:else}
-    <p>Cargando los datos de la nota...</p>
-  {/if}
