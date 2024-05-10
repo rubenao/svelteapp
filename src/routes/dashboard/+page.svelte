@@ -1,15 +1,39 @@
+<script context="module">
+  import { isAuthenticated } from '$lib/auth';
+  import { goto } from '$app/navigation';
+  
+  export async function load({ session }) {
+    if (!isAuthenticated()) {
+      goto('/login'); // Redirige al login si no está autenticado
+      return { status: 302, redirect: '/login' }; // Opción adicional para redireccionamiento
+    }
+  }
+</script>
+
+
+
 <script>
     import { onMount } from 'svelte';
     import { getUserData } from '$lib/api';
     import {getUserNotes} from '$lib/api'
     import {deleteNote} from '$lib/api'
     import {createNote} from '$lib/api'
-    import { goto } from '$app/navigation';
+    //import { goto } from '$app/navigation';
+    //import {isAuthenticated} from '$lib/auth'
   
     let user = null;
     let error = '';
     let notes = [];
     let newTaskName = '';
+
+    
+    //Revisa si el usuario está autenticado
+    /*export async function load({ session }) {
+      if (!isAuthenticated()) {
+        goto('/login'); // Redirige al login si no está autenticado
+        return { status: 302, redirect: '/login' }; // Opción adicional para redireccionamiento
+      }
+    }*/
   
     onMount(async () => {
       try {
@@ -40,6 +64,7 @@
       addNote();
     }
   }
+
 
 
 
