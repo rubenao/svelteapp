@@ -1,7 +1,9 @@
 // src/lib/api.js
+import { goto } from '$app/navigation';
 export const getUserData = async () => {
     const token = sessionStorage.getItem('auth_token');
     if (!token) {
+      goto('/login'); // Redirige al login si no está autenticado
       throw new Error("No auth token found");
     }
   

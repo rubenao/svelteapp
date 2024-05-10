@@ -24,8 +24,9 @@ export async function registerUser(name,email, password) {
   }
 
   
-export const isAuthenticated = () => {
+export const isAuthenticated = async () => {
     const token = sessionStorage.getItem('auth_token');
+    console.log(token)
     return !!token; // Devuelve true si el token existe, false en caso contrario
   };
   

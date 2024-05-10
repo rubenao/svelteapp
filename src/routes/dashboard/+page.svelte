@@ -2,7 +2,7 @@
   import { isAuthenticated } from '$lib/auth';
   import { goto } from '$app/navigation';
   
-  export async function load({ session }) {
+  export async function load() {
     if (!isAuthenticated()) {
       goto('/login'); // Redirige al login si no está autenticado
       return { status: 302, redirect: '/login' }; // Opción adicional para redireccionamiento
